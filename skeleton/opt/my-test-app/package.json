@@ -1,0 +1,10 @@
+{
+  "name": "my-test-app",
+  "private": true,
+  "version": "1.0.0",
+  "dependencies": {
+    "commander": "^2.7.1",
+    "config": "^1.12.0",
+    "npmlog": "^1.2.0"
+  }
+}

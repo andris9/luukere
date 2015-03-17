@@ -1,0 +1,39 @@
+#!/usr/bin/env node
+
+'use strict';
+
+var fs = require('fs');
+var program = require('commander');
+var packageData = require('../package.json');
+var log = require('npmlog');
+
+program.
+version(packageData.version).
+usage('[options]').
+option('--config-dir <dir>', 'Configuration directory').
+option('--log-level <level>', 'Log level: info, warn, error', /^(silly|verbose|info|http|warn|error)$/i).
+option('--node-env <env>', 'Node environment, eg. "production"').
+option('--pid-file <file>', 'PID file location').
+parse(process.argv);
+
+if (program.logLevel) {
+    log.level = program.logLevel;
+    log.info('App', 'Setting log level to %s', program.logLevel);
+}
+
+if (program.configDir) {
+    process.env.NODE_CONFIG_DIR = program.configDir;
+    log.info('App', 'Using config files from %s', program.configDir);
+}
+
+if (program.nodeEnv) {
+    process.env.NODE_ENV = program.nodeEnv;
+    log.info('App', 'Running as %s environment', program.nodeEnv);
+}
+
+if (program.pidFile) {
+    fs.writeFileSync(program.pidFile, process.pid);
+    log.info('App', 'Using pidfile to %s', program.configDir);
+}
+
+require('../src/my-test-app.js');

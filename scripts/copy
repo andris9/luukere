@@ -1,0 +1,23 @@
+#/bin/bash
+
+APP=$1
+DESCRIPTION=$2
+SOURCE=$3
+DESTINATION=$4
+
+cp -r $SOURCE/ $DESTINATION
+
+cd $DESTINATION
+
+# find . -type f | xargs sed -i  's/my-test-app/${APP}/g'
+
+find ./ -type f -exec sed -i -e "s/my-test-app/${APP}/g;s/My Test App/${DESCRIPTION}/g" {} \;
+find . -name "*-e" -type f -print | xargs /bin/rm -f
+
+mv ./etc/init/my-test-app.conf "./etc/init/${APP}.conf"
+mv ./opt/my-test-app/bin/my-test-app "./opt/my-test-app/bin/${APP}"
+mv ./opt/my-test-app/src/my-test-app.js "./opt/my-test-app/src/${APP}.js"
+mv ./etc/my-test-app.d "./etc/${APP}.d"
+mv ./opt/my-test-app "./opt/${APP}"
+
+echo "Skeleton built to $DESTINATION"

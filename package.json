@@ -1,0 +1,24 @@
+{
+  "name": "luukere",
+  "version": "1.0.0",
+  "description": "Generate Node.js server application skeletons that can be compiled into Debian .deb packages",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/andris9/luukere.git"
+  },
+  "bin": {
+    "luukere": "./bin/luukere"
+  },
+  "keywords": [
+    "deb",
+    "ubuntu",
+    "debian",
+    "server",
+    "application"
+  ],
+  "author": "Andris Reinman",
+  "license": "MIT",
+  "dependencies": {
+    "commander": "^2.7.1"
+  }
+}

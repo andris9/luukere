@@ -1,0 +1,41 @@
+#!/usr/bin/env node
+
+'use strict';
+
+var fs = require('fs');
+var program = require('commander');
+var packageData = require('../package.json');
+var path = require('path');
+var mkdirp = require('mkdirp');
+var spawn = require('child_process').spawn;
+
+program.
+version(packageData.version).
+usage('[options]').
+option('-a --app <appname>', 'Application name').
+option('-d --description <description>', 'Application description (optional)', 'Node.js Server Application').
+parse(process.argv);
+
+if (!program.app) {
+    program.outputHelp();
+    return process.exit(1);
+}
+
+var source = path.join(__dirname, '..', 'skeleton');
+var destination = path.join(process.cwd(), program.app);
+
+mkdirp(destination, function(err) {
+    if (err) {
+        console.error(err);
+        return process.exit(1);
+    }
+
+    var copy = spawn(path.join(__dirname, '../scripts/copy'), [program.app, program.description, source, destination]);
+
+    copy.stdout.pipe(process.stdout);
+    copy.stderr.pipe(process.stderr);
+
+    copy.on('close', function(code) {
+        process.exit(code);
+    });
+});
