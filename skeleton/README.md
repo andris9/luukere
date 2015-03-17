@@ -1,4 +1,4 @@
-# Node DEB Skeleton
+# My Test App
 
 This is a skeleton of a Node.js server application (the example implements the echo server from Node.js homepage) that can be converted into a deb package with [fpm](https://github.com/jordansissel/fpm/wiki). The skeleton was generated with the [luukere](https://www.npmjs.com/package/luukere) command.
 

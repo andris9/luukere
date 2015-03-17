@@ -2,4 +2,4 @@
 
 NAME="my-test-app"
 
-service "${NAME}" start
+initctl start "${NAME}"
