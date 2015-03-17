@@ -36,7 +36,7 @@ If you generate packages in OSX you might need the gnu-tar package which can be 
 Once you have the dependencies set up you're all good to go. Generate your application package with:
 
     cd my-test-app
-    ./build-deb-sh
+    ./build-deb.sh
 
 The command generates a deb file to the */dist* folder. You can install the generated package on Ubuntu/Debian like this:
 
