@@ -8,6 +8,7 @@ cd opt/$NAME
 npm install
 cd $DIR
 
+mkdir -p dist
 rm -rf dist/${NAME}-*.deb
 fpm -s dir -t deb -n ${NAME} -v $VERSION -C . \
   -p dist/${NAME}-VERSION_ARCH.deb \

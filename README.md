@@ -12,11 +12,11 @@ Install from npm
 
 ### Generate Skeleton App
 
-    luukere -n "my-test-app" -d "My Awesome Server App"
+    luukere -a "my-test-app" -d "My Awesome Server App"
 
 Where
 
-  * **-n** identifies the name of the app (this is used as a folder name, so don't use spaces etc.)
+  * **-a** identifies the app name (this is used as a folder name, so don't use spaces etc.)
   * **-d** describes the created app
 
 ## Building the App
