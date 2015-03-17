@@ -1,6 +1,6 @@
 {
   "name": "luukere",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Generate Node.js server application skeletons that can be compiled into Debian .deb packages",
   "repository": {
     "type": "git",
